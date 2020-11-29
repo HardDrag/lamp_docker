@@ -1,0 +1,43 @@
+version: "3.8"
+services:
+  php:
+    build: './php/'
+    networks:
+      - back
+    volumes:
+      - ./html/:/var/www/html/
+    container_name: phpw
+    links:
+     - mysql
+  apache:
+    build: './apache/'
+    links:
+      - mysql
+    networks:
+      - front
+      - back
+    ports:
+      - "6666:80"
+    volumes:
+      - ./html/:/var/www/html/
+    container_name: apachew
+  mysql:
+    build: './mysql/'
+    command: --default-authentication-plugin=mysql_native_password 
+    ports:
+      - "3306:3306"
+    volumes:
+      - data:/var/lib/mysql
+    networks:
+      - back
+    environment:
+      MYSQL_ROOT_PASSWORD: sample
+      MYSQL_DATABASE: sample_db
+      MYSQL_USER: sample
+      MYSQL_PASSWORD: sample
+    container_name: mysqlw
+networks:
+  front:
+  back:
+volumes:
+    data:
