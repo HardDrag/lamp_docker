@@ -24,7 +24,7 @@ Należy je wykonać w miejscu gdzie znajduje się plik "docker-compose.yml".
 
 ### Połączenie się z serwerem
 
-Do wyświetlenia strony możemy użyć przeglądarki, a wniej należy wpisać:
+Do wyświetlenia strony możemy użyć przeglądarki, a w niej należy wpisać:
 
 ```
 localhost:6666
